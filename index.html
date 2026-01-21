@@ -3,22 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>To-Do List</title>
-
-    <!-- CSS Eksternal -->
-    <link rel="stylesheet" href="css/styles.css"
+    <title>Berries To-Do List</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-    <!-- Header Content -->
-    <header></header>
+<body class="bg-[#0f172a] min-h-screen flex items-center justify-center p-4">
 
-    <!-- Main Content-->
-    <main></main>
+    <div class="bg-[#1e293b] w-full max-w-2xl rounded-2xl shadow-2xl p-6 border border-gray-700">
+        <header class="text-center mb-8">
+            <h1 class="text-3xl font-bold text-white tracking-tight">Berries To-Do List</h1>
+        </header>
 
-    <!--Footer Content-->
-    <footer></footer>
-    
-    <!-- JS Eksternal -->
+        <main>
+            <form id="todo-form" class="flex flex-wrap gap-3 mb-6">
+                <input class="flex-grow bg-[#334155] border-none rounded-lg p-3 text-white placeholder-gray-400 focus:ring-2 focus:ring-blue-500 outline-none" 
+                       type="text" id="todo-input" placeholder="Add a new task...">
+                
+                <input class="bg-[#334155] border-none rounded-lg p-3 text-white focus:ring-2 focus:ring-blue-500 outline-none" 
+                       type="date" id="date-input">
+
+                <button onclick="addTodo()" type="button" class="bg-blue-600 hover:bg-blue-500 text-white font-bold p-3 rounded-lg transition-all flex items-center justify-center">
+                    <span class="text-xl">+</span>
+                </button> 
+            </form>
+
+            <div class="flex justify-between items-center mb-6 bg-[#0f172a] p-3 rounded-xl border border-gray-800">
+                <label class="text-gray-400 font-semibold uppercase text-xs tracking-wider">Filter By Status:</label>
+                <select onchange="renderTodos()" id="filter" class="bg-transparent text-white font-bold outline-none cursor-pointer">
+                    <option value="all">All Tasks</option>
+                    <option value="ongoing">Ongoing</option>
+                    <option value="completed">Completed</option>
+                    <option value="uncompleted">Uncompleted</option>
+                </select>
+            </div>
+            
+            <section class="bg-[#0f172a] rounded-xl overflow-hidden border border-gray-800">
+                <div class="grid grid-cols-4 gap-4 p-3 bg-[#1e293b] text-[10px] uppercase font-bold text-gray-400 border-b border-gray-800">
+                    <span class="col-span-1">Task</span>
+                    <span>Due Date</span>
+                    <span>Status</span>
+                    <span class="text-right">Actions</span>
+                </div>
+
+                <ul id="todo-list" class="divide-y divide-gray-800">
+                    <li class="p-8 text-center text-gray-500">No task found</li>
+                </ul>
+            </section>
+
+            <div class="mt-6 flex justify-end">
+                <button onclick="removeAllTodo()" class="bg-blue-600/20 hover:bg-blue-600/40 text-blue-400 border border-blue-500/30 px-6 py-2 rounded-lg font-bold text-sm transition-all shadow-lg uppercase tracking-widest">
+                    Delete All
+                </button>
+            </div>
+        </main>
+    </div>
+
     <script src="js/script.js"></script>
 </body>
 </html>
